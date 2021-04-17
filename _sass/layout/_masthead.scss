@@ -59,6 +59,7 @@ header.masthead {
   max-width: 100%;
   height: auto;
   width: 200px;
+  margin: auto;
 }
 
 hr {
@@ -78,6 +79,10 @@ hr {
 .article-titles {
   text-transform:none;
 }
+
+.article-top-padding {
+    padding: 120px 0px 0px 0px;
+  }
 
 img {
   vertical-align: middle;
@@ -105,6 +110,26 @@ img {
     padding-left: 15px;
 }
 
+.highlight pre {
+    background: #272822;
+    color: #f8f8f2;
+}
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: auto;
+}
+
+.featurette-divider {
+    margin: 40px 0;
+}
 
 // .show-on-hover {
 //   display: none;
