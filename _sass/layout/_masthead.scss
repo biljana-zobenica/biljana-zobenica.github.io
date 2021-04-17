@@ -50,6 +50,62 @@ header.masthead {
   }
 }
 
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: 200px;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+    height: 0;
+    box-sizing: content-box;
+}
+
+
+.section-top-padding {
+    padding: 20px 0px 0px 0px;
+}
+
+.article-titles {
+  text-transform:none;
+}
+
+img {
+  vertical-align: middle;
+  border: 0;
+}
+
+#blog img {
+  width: 200px;
+}
+
+.text-center {
+    text-align: center;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-md-3, col-md-9 {
+    width: 50%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
 // .show-on-hover {
 //   display: none;
 // }
