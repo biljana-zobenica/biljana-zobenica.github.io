@@ -6,3 +6,11 @@ _site
 Gemfile.lock
 unused
 bootstrap-reference.html
+
+# IDE - VSCode
+.vs/*
+!.vs/settings.json
+!.vs/tasks.json
+!.vs/launch.json
+!.vs/extensions.json
+.history/*
