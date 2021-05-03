@@ -2,6 +2,8 @@
 
 https://biljana-zobenica.github.io/
 
+![screenshot](https://raw.githubusercontent.com/biljana-zobenica/biljana-zobenica.github.io/assets/img/screenshot.PNG)
+
 # Agency Jekyll Theme
 
 ![screenshot](https://raw.githubusercontent.com/raviriley/agency-jekyll-theme/master/screenshot.PNG)
