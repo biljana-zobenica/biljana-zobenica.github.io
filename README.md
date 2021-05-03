@@ -42,11 +42,6 @@ The Jekyll structure of this theme includes:
 - `navigation.yml` enables fully customizable navigation
 - `style.yml` enables fully customizable colors, background images, and other style-related things
 
-
-**If you enjoy this theme, please consider [supporting me](https://www.paypal.me/raviriley) to continue developing and maintaining it.**
-
-[![Support via PayPal](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://www.paypal.me/raviriley)
-
 ## Installation
 There are three ways to install this theme:
 1. As a gem-based theme
