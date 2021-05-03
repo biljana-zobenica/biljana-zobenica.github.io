@@ -6,9 +6,7 @@ https://biljana-zobenica.github.io/
 
 # Agency Jekyll Theme
 
-![screenshot](https://raw.githubusercontent.com/raviriley/agency-jekyll-theme/master/screenshot.PNG)
-
-This is the [Agency Bootstrap theme](https://startbootstrap.com/themes/agency/) converted to a gem-based Jekyll theme with GitHub Pages support, which includes:
+This is the [Agency theme](http://jekyllthemes.org/themes/agency/) converted to a gem-based Jekyll theme with GitHub Pages support, which includes:
 
 - GitHub Pages support
 - contact form functionality powered by [Formspree.io](https://formspree.io)
