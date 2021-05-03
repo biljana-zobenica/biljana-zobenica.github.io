@@ -2,7 +2,7 @@
 
 https://biljana-zobenica.github.io/
 
-![screenshot](https://raw.githubusercontent.com/biljana-zobenica/biljana-zobenica.github.io/assets/img/screenshot.PNG)
+![screenshot](https://github.com/biljana-zobenica/biljana-zobenica.github.io/blob/0354207655a5b8df64377cc6202541df09716d43/assets/img/demo_headline.png)
 
 # Agency Jekyll Theme
 
