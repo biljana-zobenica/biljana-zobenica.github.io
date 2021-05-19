@@ -2,13 +2,11 @@
 
 https://biljana-zobenica.github.io/
 
-![screenshot](https://raw.githubusercontent.com/biljana-zobenica/biljana-zobenica.github.io/assets/img/screenshot.PNG)
+![screenshot](https://github.com/biljana-zobenica/biljana-zobenica.github.io/blob/0354207655a5b8df64377cc6202541df09716d43/assets/img/demo_headline.png)
 
 # Agency Jekyll Theme
 
-![screenshot](https://raw.githubusercontent.com/raviriley/agency-jekyll-theme/master/screenshot.PNG)
-
-This is the [Agency Bootstrap theme](https://startbootstrap.com/themes/agency/) converted to a gem-based Jekyll theme with GitHub Pages support, which includes:
+This is the [Agency theme](http://jekyllthemes.org/themes/agency/) converted to a gem-based Jekyll theme with GitHub Pages support, which includes:
 
 - GitHub Pages support
 - contact form functionality powered by [Formspree.io](https://formspree.io)
