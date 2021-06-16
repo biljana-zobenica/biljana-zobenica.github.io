@@ -191,8 +191,24 @@ memory usage: 122.7+ KB
 </pre>
                                 <p>So, in total, we have 1309 entries, 11 columns and data type information for each one in the dataset. Apparently, we have some missing data,
                                     which we will analyise and resolve in the proper way. In this step, we just explore the data by using simple functions as .head, .tail, slicing
-                                    techniques, filtering with .loc. In this way, the basic overview of the data is gained.
+                                    techniques, filtering with .loc. In this way, the basic overview of the data structure is gained.
                                 </p>
+
+                            <p>Next, we analyse the summary statistics, depending on the type of the feature: numerical or categorical ones.
+                                For numerical features, we analyse the centrality measures (mean, median) and dispersion measure (range, percentiles, variance, standard deviation).
+                                For categorical features, we analyse the total and unique count, category counts and proportions, as well as per category statistics.
+                                By using .describe functions, including the argument 'all', we get <strong>the summary statistics</strong> strong of all features, as follows:
+                            </p>   
+                            <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_summary_stat_all.jpg">
+                            <br>
+                            <p>
+                                Without the argument 'all', we would get only the summary statistics of numerical features, where we can analyse the centrality and dispersion measures.
+                                This is for the reason, since categorical features need to be analysed in different way. Take for example the feature of <strong>'Pclass'</strong>, which represents the 
+                                the class of the passanger. The graph below represents the number of passengers, categorized by the class 1st, 2nd or 3rd. Obviously, the highest number 
+                                of passengers were in the lowest class.
+                            </p>
+                            <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_class_bar.png">
+
                             <br>
                             <h5>Advanced Exploratory Data Analysis (EDA)</h5>
                             <br>
