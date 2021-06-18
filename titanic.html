@@ -203,7 +203,7 @@ memory usage: 122.7+ KB
                             <br>
                             <p>
                                 Without the argument 'all', we would get only the summary statistics of numerical features, where we can analyse the centrality and dispersion measures.
-                                This is for the reason, since categorical features need to be analysed in different way. Take for example the feature of <strong>'Pclass'</strong>, which represents the 
+                                This is for the reason, since categorical features need to be analysed in different way. Take for example the feature of <strong>Pclass</strong>, which represents the 
                                 the class of the passanger. The graph below represents the number of passengers, categorized by the class 1st, 2nd or 3rd. 
                             </p>
                             <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_class_bar.png">
@@ -213,6 +213,28 @@ memory usage: 122.7+ KB
                             <br>
                             <h5>Advanced Exploratory Data Analysis (EDA)</h5>
                             <br>
+                            <p>
+                                By creating <strong>a crosstab</strong> and presenting it with a bar plot, using pandas library, also applying it to the <strong>Pclass and Sex</strong> features, 
+                                we drive the additional conclusion that the majority of passangers in the third class are the male passangers, exactly number of 493. It is a very handy 
+                                EDA technique, but its extension would be creating pivots. With pivots, we can add an argument of a function to be applied on a specific feature. 
+                            </p>
+                            <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_crosstab.png">
+                            
+                            <p>
+                                Furthermore, we would like to apply some visualization tools in order to further analyse <strong>the distribution of the data</strong>. In that case,
+                                in order to analyse one feature's distribution or <strong>an univariate</strong> distribution, we use histogram and/or kernel density estimation (KDE) plot.
+                                But, if we want to analyse <strong>a bivariate</strong> distribution or a distribution of two features, we use scatter plot for visualization. Analysing 
+                                the distribution, we look into very important aspects of it, such as <strong>skewness and kurtosis</strong>. In real world, we could rarely find the normal distribution.
+                                But, it serves as a standard for all real distributions in terms of their variations as opposed to normal distribution.
+                            </p>
+                            <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_histogram_fare_age_advanced.png">
+                            <p>Looking at the histogram of the features <strong>Age and Fare</strong>, we can see positively skewed distributions or we have their mean values higher than the medians.
+                                In terms of Age, this means that 50% of the passangers are older than 28 years and the other half is younger than the median of 28 years. Also, the mean age is 29.88,
+                                so, it is slightly skewed in right, meaning there are majority of ages around median, but also longer tail in the left with some very old people, comparing
+                                them to the median, shifting the mean age to be slightly higher than the meadian. Similarly, with more positive distribution, logic could be applied in terms of Fare.
+                                Also, further analysis of box-plots will be done in the next sections of data munging and feature engineering.
+                            </p>
+
 
                             <br>
                             <h5>Data Munging</h5>
