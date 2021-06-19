@@ -124,12 +124,12 @@
                                 system.
                             </p>
                             <hr class="featurette-divider">
-
+                            
                             <h3>Extracting Data</h3>
                             <br>
                             <p>
-                                For description, evaluation and dataset, <a
-                                    href="https://www.kaggle.com/c/titanic/overview" target="_blank">the kaggle's
+                                For description, evaluation and dataset, <a href="https://www.kaggle.com/c/titanic/overview" target="_blank">the
+                                    kaggle's
                                     platform</a> has been used.
                                 Short description of the Titanic challenge: as widely well known, Titanic is one of the
                                 most infamous shipwrecks in history.
@@ -137,19 +137,17 @@
                                 resulting in one of the deadliest shipwrecks.
                                 While there was some element of luck involved in surviving, it is likely that some
                                 groups of people were having higher possibilities to survive than others.
-                                In this challenge, the main question is defined as follows: <strong
-                                    style="color:#df2344;">"What kind of people were more likely to survive?".</strong>
+                                In this challenge, the main question is defined as follows: <strong style="color:#df2344;">"What kind of people were
+                                    more likely to survive?".</strong>
                                 In this course, a couple of common data science practices were explained, regarding the
                                 extraction of dataset by using techniques such as extraction from databases (sqlite3
                                 library), through APIs (requests library) and web scraping (requests and BeautifulSoup
                                 libraries).
-                                In <a
-                                    href="https://github.com/biljana-zobenica/titanic/blob/master/notebooks/1.0-bz-extract-titanic-data.ipynb"
+                                In <a href="https://github.com/biljana-zobenica/titanic/blob/master/notebooks/1.0-bz-extract-titanic-data.ipynb"
                                     target="_blank">the first Jupyter notebook</a>, the automated script for extracting
                                 data has been created.
                             </p>
                             <hr class="featurette-divider">
-
                             <h3>Exploring and Processing Data</h3>
                             <br>
                             <p>
@@ -161,24 +159,42 @@
                                 <a href="https://github.com/biljana-zobenica/titanic/blob/master/notebooks/2.0-bz-exploring-processing-data.ipynb"
                                     target="_blank">the second Jupyter notebook</a>.
                             </p>
-                            <br>
-                            <h5>Basic Exploratory Data Analysis (EDA)</h5>
-                            <br>
-                                <p>Firstly, we import the Python libraries and as a common practice, we make their aliases. In order to start the basic exploratory 
-                                data analysis, we need to import the dataset, more precisely the train and test .csv files. Analysing the data structure, 
+                            <p>Firstly, we import the Python libraries and as a common practice, we make their aliases. In order to start the basic
+                                exploratory
+                                data analysis, we need to import the dataset, more precisely the train and test .csv files.
+                            </p>
+<div class="highlight">
+<pre>
+<span class="c">  # import python libraries</span>
+  <span class="s">import</span> pandas <span class="s">as</span> pd
+  <span class="s">import</span> numpy <span class="s">as</span> np
+  <span class="s">import</span> os
+
+<span class="c">  # set the path of the raw data, in accordance with cookiecutter template</span>
+  raw_data_path <span class="s">=</span> os<span class="s">.</span>path<span class="s">.</span>join(os<span class="s">.</span>path<span class="s">.</span>pardir, <span class="f">'data'</span>, <span class="f">'raw'</span>)
+  train_file_path <span class="s">=</span> os<span class="s">.</span>path<span class="s">.</span>join(raw_data_path, <span class="f">'train.csv'</span>)
+  test_file_path <span class="s">=</span> os<span class="s">.</span>path<span class="s">.</span>join(raw_data_path, <span class="f">'test.csv'</span>)
+
+<span class="c">  # read the data with .read_csv method</span>
+  train_df <span class="s">=</span> pd<span class="s">.</span>read_csv(train_file_path, index_col<span class="s">=</span><span class="f">'PassengerId'</span>)
+  test_df <span class="s">=</span> pd<span class="s">.</span>read_csv(test_file_path, index_col<span class="s">=</span><span class="f">'PassengerId'</span>)
+</pre>
+</div>
+                                <p>Analysing the data structure, 
                                 we can see some of the basic data-related info by using .info function, such as the number of data entries, columns, types of data, 
                                 whether we have the missing data and memory usage of the dataframe. Having the separate train and test data, we concatenate these
                                 two dataframes into one dataset. After this, we have the data info as follows:
                                 </p>
 <div class="highlight">
 <pre>
-<span class="c">  # concatenate the train and test dataset with pandas .concat method:</span>
-  df = pd.concat((train_df, test_df), axis=0)
+<span class="c">  # concatenate the train and test dataset with pandas .concat method</span>
+  df <span class="s">=</span> pd<span class="s">.</span>concat((train_df, test_df), axis<span class="s">=</span>0)
 
-<span class="c">  # get some basic information of the dataframe</span>
-  df.info()
+<span class="c">  # get some basic information of the dataframe with .info method</span>
+  df<span class="s">.</span>info()
 </pre>
 <pre>  &lt;class 'pandas.core.frame.DataFrame'&gt; 
+
   Int64Index: 1309 entries, 1 to 1309 
   Data columns (total 11 columns):
    #   Column    Non-Null Count  Dtype  
@@ -202,7 +218,9 @@
                                     which we will analyise and resolve in the proper way. In this step, we just explore the data by using simple functions as .head, .tail, slicing
                                     techniques, filtering with .loc. In this way, the basic overview of the data structure is gained.
                                 </p>
-
+                                <br>
+                                <h5>Basic Exploratory Data Analysis (EDA)</h5>
+                                <br>
                             <p>Next, we analyse the summary statistics, depending on the type of the feature: numerical or categorical ones.
                                 For numerical features, we analyse the centrality measures (mean, median) and dispersion measure (range, percentiles, variance, standard deviation).
                                 For categorical features, we analyse the total and unique count, category counts and proportions, as well as per category statistics.
