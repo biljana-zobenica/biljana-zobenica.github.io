@@ -277,7 +277,8 @@
 </div>
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_class_bar.png">
                                 <p>
-                                    Obviously, we can make a clear conclusion that the highest number of passengers were in the lowest class.</p>
+                                    Obviously, we can make a clear conclusion that the highest number of passengers were in the lowest class.
+                                </p>
                                 <br>
                                 <h5>Advanced Exploratory Data Analysis (EDA)</h5>
                                 <br>
@@ -289,6 +290,12 @@
                                     EDA technique, but its extension would be creating pivots. With pivots, we can add an argument of a function to be
                                     applied on a specific feature.
                                 </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # create crosstab for Sex and Pclass features to get insights, present with bar chart</span>
+  pd<span class="s">.</span>crosstab(df<span class="s">.</span>Sex, df<span class="s">.</span>Pclass)<span class="s">.</span>plot(kind<span class="s">=</span><span class="f">'bar'</span>);
+</pre>
+</div>
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_crosstab.png">
                                 
                                 <p>
