@@ -335,16 +335,116 @@
                                 <h5>DATA MUNGING</h5>
                                 <br>
                                 <p>
-                                    Data munging is very important part of data analysis which refers to dealing with missing values or outliers. 
+                                    Data munging is a very important part of data analysis, which refers to dealing with missing values or outliers. 
                                     By using .info method earlier, we have already detected some features with missing values (Age, Fare and Embarked, whereas Cabin will be analysed in Feature engineering section).
                                     Similarly, while plotting some features, especially Age, we have seen the existence of some extreme values of this feature.
                                 </p>
                                 <br>
-                                <h6>Working with Missing Values</h6>
+                                <h6>WORKING WITH MISSING VALUES</h6>
+                                <br>
+                                <p>
+                                    As we have realised earlier, in Titanic dataset, there are a couple of features with missing values. In terms of possible solutions, 
+                                    we have these techniques at our disposal:
+                                    <ul>
+                                        <li>Deletion - only if few observations have a missing-value issue;</li>
+                                        <li>Imputation - replacing NaNs with plausable data, such as mean, median or mode imputation;</li>
+                                        <li>Forward/backward fill - used in case of time series or sequential data;</li>
+                                        <li>Predictive model;</li>
+                                    </ul>
+                                    The last two in the list represent advanced techniques for resolving a missing-value issue.
+                                </p>
+                                <br>
+                                <h6>FEATURE: Embarked</h6>
+                                <br>
+                                <p>
+                                    From our previous EDA section, we see that there are two NaN values of this feature in the dataset.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # use .isnull function to extract missing values</span>
+  df [df<span class="s">.</span>Embarked<span class="s">.</span>isnull()]
+</pre>
+</div>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_embarked_missing_value.png">
+                                <br>
+<div class="highlight">
+    <pre>
+<span class="c">  # use .value_counts function to count the frequency of embarkment</span>
+  df<span class="s">.</span>Embarked<span class="s">.</span>value_counts()
+</pre>
+</div>
+<div class="highlight">
+<pre>  S    914
+  C    270
+  Q    123
+  Name: Embarked, dtype: int64
+</pre>
+</div>
+                                <p>
+                                    So, the highest number of embarkment happened at the S location. 
+                                    <br>But which embarked point had higher survival count? As both of these passangers survived.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # use .crosstab technique to discover which embarkment location had the highest survival rate</span>
+  pd<span class="s">.</span>crosstab (df[df<span class="s">.</span>Survived <span class="s">!=</span> -888]<span class="s">.</span>Survived, df[df.Survived <span class="s">!=</span> -888]<span class="s">.</span>Embarked)
+</pre>
+</div>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_embarked_survival_rate.png">
+                                <br>
+                                <p>
+                                    Here, we filter out the survival data with -888 value, which come from test data where we do not have survival information.
+                                    So, in absolute terms, the embarkment point with the highest survival rate was the S one. Relatively, the result is different.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # explore Pclass and Fare for each Embarkment point</span>
+  df<span class="s">.</span>groupby ([<span class="f">'Pclass'</span>, <span class="f">'Embarked'</span>])<span class="s">.</span>Fare<span class="s">.</span>median()
+</pre>
+</div>
+                                <p>
+                                    As both of these two passangers survived, were in 1st class and with Fare of 80, let's try to use these information as well.
+                                </p>
+<div class="highlight">
+    <pre>  Pclass  Embarked
+       1         C         76.7292
+                 Q         90.0000
+                 S         52.0000
+       2         C         15.3146
+                 Q         12.3500
+                 S         15.3750
+       3         C          7.8958
+                 Q          7.7500
+                 S          8.0500
+  Name: Fare, dtype: float64
+</pre>
+</div>
+                                <p>
+                                    From this point of view, we see that it is most likely that these passangers had embarkment point C.
+                                    Finally, let's fill in the missing values with C embarkment point and check if any null values remain afterwards.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # replace the missing values with 'C' by using .fillna method</span>
+  df<span class="s">.</span>Embarked<span class="s">.</span>fillna (<span class="f">'C'</span>, inplace <span class="s">=</span> True)
+
+<span class="c">  # check if any null values exist with .isnull, after .fillna was applied</span>
+  df [df<span class="s">.</span>Embarked<span class="s">.</span>isnull()]
+</pre>
+</div>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_embarked_no_null.png">
+                                <br>
+                                <p>
+                                    Great! We have solved the first feature with a missing-value issue. <br>Let's tackle the rest!
+                                </p>
+                                <br>
+                                <h6>FEATURE: Fare</h6>
+                                <br>
+                                <h6>FEATURE: Age</h6>
 
 
                                 <br>
-                                <h6>Working with Outliers</h6>
+                                <h6>WORKING WITH OUTLIERS</h6>
 
                                 <br>
                                 <h5>FEATURE ENGINEERING</h5>
