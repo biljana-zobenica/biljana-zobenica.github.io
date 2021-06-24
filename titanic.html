@@ -193,7 +193,7 @@
                                 </p>
 <div class="highlight">
     <pre>
-<span class="c">  # concatenate the train and test dataset with pandas .concat method</span>
+<span class="c">  # concatenate the train and test datasets with pandas .concat method</span>
   df<span class="s"> = </span>pd<span class="s">.</span>concat((train_df, test_df), axis<span class="s">=</span><span class="n">0</span>)
 
 <span class="c">  # get some basic information of the dataframe with .info method</span>
@@ -246,7 +246,7 @@
                                     Now we have the general idea of the dataset contents, we can explore more deeply some specific features.
                                 </p>
                                 <br>
-                                <h5>Basic Exploratory Data Analysis (EDA)</h5>
+                                <h5>BASIC Exploratory Data Analysis (EDA)</h5>
                                 <br>
                                 <p>Next, we analyse the summary statistics, depending on the type of the feature: numerical or categorical ones.
                                     For numerical features, we analyse the centrality measures (mean, median) and dispersion measure (range,
@@ -276,11 +276,12 @@
 </pre>
 </div>
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_class_bar.png">
+                                <br>
                                 <p>
                                     Obviously, we can make a clear conclusion that the highest number of passengers were in the lowest class.
                                 </p>
                                 <br>
-                                <h5>Advanced Exploratory Data Analysis (EDA)</h5>
+                                <h5>ADVANCED Exploratory Data Analysis (EDA)</h5>
                                 <br>
                                 <p>
                                     By creating <strong>a crosstab</strong> and applying it to the <strong>Pclass and Sex</strong> features,
@@ -291,46 +292,66 @@
 <div class="highlight">
     <pre>
 <span class="c">  # create crosstab for Sex and Pclass features to get insights, present with bar chart</span>
-  pd<span class="s">.</span>crosstab(df<span class="s">.</span>Sex, df<span class="s">.</span>Pclass)<span class="s">.</span>plot(kind<span class="s">=</span><span class="f">'bar'</span>);
+  pd<span class="s">.</span>crosstab (df<span class="s">.</span>Sex, df<span class="s">.</span>Pclass)<span class="s">.</span>plot(kind<span class="s">=</span><span class="f">'bar'</span>);
 </pre>
 </div>
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_crosstab.png">
-                                
+                                <br>
                                 <p>
-                                    Furthermore, we would like to apply some visualization tools in order to further analyse <strong>the distribution of
-                                        the data</strong>. In that case,
-                                    in order to analyse one feature's distribution or <strong>an univariate</strong> distribution, we use histogram
-                                    and/or kernel density estimation (KDE) plot.
-                                    But, if we want to analyse <strong>a bivariate</strong> distribution or a distribution of two features, we use
-                                    scatter plot for visualization. Analysing
-                                    the distribution, we look into very important aspects of it, such as <strong>skewness and kurtosis</strong>. In real
-                                    world, we could rarely find the normal distribution.
-                                    But, it serves as a standard for all real distributions in terms of their variations as opposed to normal
-                                    distribution.
+                                    For instance, using the same features, we could create a pivot table by defining the function argument to calculate mean of the value <strong>Age</strong>.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # create pivot table by defining 4 arguments (rows, columns, values and function)</span>
+  pd<span class="s">.</span>pivot_table (index<span class="s">=</span><span class="f">'Sex'</span>, columns<span class="s">=</span><span class="f">'Pclass'</span>, values<span class="s">=</span><span class="f">'Age'</span>, aggfunc<span class="s">=</span><span class="f">'mean'</span>)
+</pre>
+</div>
+<div class="highlight">
+    <pre>
+<span class="c">  # or get the same result by using .groupby, .mean and .unstack methods</span>
+  df<span class="s">.</span>groupby ([<span class="f">'Sex'</span>, <span class="f">'Pclass'</span>])<span class="s">.</span>Age<span class="s">.</span>mean()<span class="s">.</span>unstack()
+</pre>
+</div>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_pivot.png">
+                                <br>
+                                <p> So, the majority of male passangers in the 3rd class are 25.96 years old in average.</p>
+                                <p>
+                                    Furthermore, we would like to apply some visualization tools in order to analyse <strong>the distribution of the data</strong>.
+                                    Firslty, we make a distinction between <strong>an univariate</strong> distribution, where we use histogram
+                                    and/or kernel density estimation (KDE) plot, and <strong>a bivariate</strong> distribution or a distribution of two features, 
+                                    where we use a scatter plot for visualization. Analysing data distribution, we look into very important aspects of it, such as 
+                                    <strong>skewness and kurtosis</strong> and its variations to the normal one, which serves as the standard.
                                 </p>
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_histogram_fare_age.png">
-                                <p>Looking at the histogram of the features <strong>Age and Fare</strong>, we can see positively skewed distributions or
+                                <p>Looking at the histogram of the features <strong>Age</strong> and <strong>Fare</strong>, we can see positively skewed distributions or
                                     we have their mean values higher than the medians.
                                     In terms of Age, this means that 50% of the passangers are older than 28 years and the other half is younger than
                                     the median of 28 years. Also, the mean age is 29.88,
-                                    so, it is slightly skewed in right, meaning there are majority of ages around median, but also longer tail in the
-                                    left with some very old people, comparing
+                                    so, it is slightly skewed in right, meaning there are majority of ages around median, but also longer tail with some very old people, comparing
                                     them to the median, shifting the mean age to be slightly higher than the meadian. Similarly, with more positive
                                     distribution, logic could be applied in terms of Fare.
-                                    Also, further analysis of box-plots will be done in the next sections of data munging and feature engineering.
                                 </p>
+                                <br>
+                                <h5>DATA MUNGING</h5>
+                                <br>
+                                <!-- <p>
+                                    Data munging is very important part of data analysis which refers to dealing with missing values or outliers. 
+                                    By using .info method earlier, we have already detected some features with missing values (Age, Fare and Embarked, whereas Cabin will be analysed in Feature engineering section).
+                                    Similarly, while plotting some features, especially Age, we have seen the existence of some extreme values of this feature.
+                                </p> -->
+                                <br>
+                                <h6>Working with Missing Values</h6>
+
+
+                                <br>
+                                <h6>Working with Outliers</h6>
+
+                                <br>
+                                <h5>FEATURE ENGINEERING</h5>
+                                <br>
                                 
-                                
                                 <br>
-                                <h5>Data Munging</h5>
-                                <br>
-                                
-                                <br>
-                                <h5>Feature Engineering</h5>
-                                <br>
-                                
-                                <br>
-                                <h5>Visualization</h5>
+                                <h5>VISUALIZATION</h5>
                                 <br>
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_histogram_fare_age_advanced.png">
                                 <br>
