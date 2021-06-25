@@ -440,12 +440,34 @@
                                 <br>
                                 <h6>FEATURE: Fare</h6>
                                 <br>
+                                <p>
+                                    We will use similar approach to the feature Fare, as we did in the previous section. So, spot the missing values, use existing 
+                                    information we have and draw some conclusions.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # check if any null values exist with .isnull</span>
+  df [df<span class="s">.</span>Fare<span class="s">.</span>isnull()]
+</pre>
+</div>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_fare_null.png">
+                                <br>
+<div class="highlight">
+    <pre>
+<span class="c">  # replace the missing values with 'C' by using .fillna method</span>
+  df<span class="s">.</span>Embarked<span class="s">.</span>fillna (<span class="f">'C'</span>, inplace <span class="s">=</span> True)
+  </pre>
+</div>
+                                <br>
                                 <h6>FEATURE: Age</h6>
 
 
                                 <br>
                                 <h6>WORKING WITH OUTLIERS</h6>
-
+                                <br>
+                                <h6>FEATURE: Fare</h6>
+                                <br>
+                                <h6>FEATURE: Age</h6>
                                 <br>
                                 <h5>FEATURE ENGINEERING</h5>
                                 <br>
