@@ -454,10 +454,29 @@
                                 <br>
 <div class="highlight">
     <pre>
-<span class="c">  # replace the missing values with 'C' by using .fillna method</span>
-  df<span class="s">.</span>Embarked<span class="s">.</span>fillna (<span class="f">'C'</span>, inplace <span class="s">=</span> True)
-  </pre>
+<span class="c">  # filter the passangers with Pclass = 3, Embarked = S, including the application of .median function to the Fare value</span>
+  median_fare <span class="s">=</span> df<span class="s">.</span>loc [(df<span class="s">.</span>Pclass <span class="s">==</span> <span class="n">3</span>) & (df<span class="s">.</span>Embarked <span class="s">==</span> <span class="f">'S'</span>), <span class="f">'Fare'</span>]<span class="s">.</span>median()
+  <span class="n">print</span> (median_fare)
+</pre>
 </div>
+<div class="highlight">
+    <pre>
+  8.5
+</pre>
+</div>
+                                <p>
+                                    We will use imputation method to deal with missing value of Fare, based on median Fare that was applied for the passangers from the 3rd class and embarkment point S.
+                                    In the following step, we fix the NaN value to be 8.5.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # apply the created median_fare function and replace NaN Fare values with median value (3rd class passangers from S embarkment point)</span>
+  df<span class="s">.</span>Fare<span class="s">.</span>fillna (median_fare, inplace <span class="s">=</span> True)]
+</pre>
+</div>
+                                <p>
+                                    If we check the number of null values with .info method, we can safely continue with the Age feature.
+                                </p>
                                 <br>
                                 <h6>FEATURE: Age</h6>
 
