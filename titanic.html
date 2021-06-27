@@ -548,8 +548,43 @@
                                     Now we see some difference in the Age levels between the Pclasses of the passangers. But, at this point, we want to track a 
                                     passanger's title and try to see its correspondence with the age difference. Let's try to extract this insight from the data!
                                 </p>
-
-
+                                <p>
+                                    We will now explore the Name values, extract the title from it and make a dictionary for titles, group titles in a couple of bins,
+                                    so we could more easily drive some new conclusions. Whether we find some new variances of the age, depending od the passangers' titles,
+                                    we could be on the right path.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # explore the Name feature</span>
+  df<span class="s">.</span>Name<span class="s">
+</pre>
+</div>
+<div class="highlight">
+    <pre>  PassengerId
+  1                                 Braund, Mr. Owen Harris
+  2       Cumings, Mrs. John Bradley (Florence Briggs Th...
+  3                                  Heikkinen, Miss. Laina
+  4            Futrelle, Mrs. Jacques Heath (Lily May Peel)
+  5                                Allen, Mr. William Henry
+  ...                        
+  1305                                   Spector, Mr. Woolf
+  1306                         Oliva y Ocana, Dona. Fermina
+  1307                         Saether, Mr. Simon Sivertsen
+  1308                                  Ware, Mr. Frederick
+  1309                             Peter, Master. Michael J
+  Name: Name, Length: 1309, dtype: object
+</pre>
+</div>
+<div class="highlight">
+    <pre>
+<span class="c">  # create the GetTitle function -> to extract the title info from the name</span>
+  <span class="n">def</span> GetTitle (name):
+      first_name_with_title <span class="s">=</span> name<span class="s">.</span>split (<span class="f">','</span>)[<span class="n">1</span>]
+      title <span class="s">=</span> first_name_with_title<span class="s">.</span>split (<span class="f">'.'</span>)[<span class="n">0</span>]
+      title <span class="s">=</span> title<span class="s">.</span>strip()<span class="s">.</span>lower()
+      <span class="n">return</span> title
+</pre>
+</div>
                                 <br>
                                 <h6>WORKING WITH OUTLIERS</h6>
                                 <br>
