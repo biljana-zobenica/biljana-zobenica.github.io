@@ -479,10 +479,28 @@
                                 </p>
                                 <br>
                                 <h6>FEATURE: Age</h6>
-
-
+                                <br>
+<div class="highlight">
+    <pre>
+<span class="c">  # check if any null values exist with .isnull</span>
+  df [df<span class="s">.</span>Age<span class="s">.</span>isnull()]
+</pre>
+</div>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_age_null.png">
+                                <br>
+                                <p>
+                                    We have exactly 263 rows with missing values of the Age feature. It is a lot of rows, so we should take a closer look of
+                                    what is the best way to deal with this issue. Whether we should apply mean, median age of the passangers or some more complex
+                                    logic. Let's find out!
+                                </p>
                                 <br>
                                 <h6>WORKING WITH OUTLIERS</h6>
+                                <br>
+                                <p>
+                                    One more data quality issue is a presence of outliers or extreme values. There are also a couple of techniques which could
+                                    be used in order to deal with such values. We will take a closer look into the features Age and Fare, since we have spotted some
+                                    high values of these variables earlier.
+                                </p>
                                 <br>
                                 <h6>FEATURE: Fare</h6>
                                 <br>
