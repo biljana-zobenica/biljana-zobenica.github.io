@@ -493,6 +493,63 @@
                                     what is the best way to deal with this issue. Whether we should apply mean, median age of the passangers or some more complex
                                     logic. Let's find out!
                                 </p>
+                                <p>
+                                    Previously, we have analysed the data distribution of the Age feature. We have seen some of very high values with passangers which
+                                    are over 70 and 80 years old. So, these extreme values could easily impact the mean Age value. But, we will check, what are the mean
+                                    and median values, just to have in mind the figures.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # get the Age mean value</span>
+  df<span class="s">.</span>Age<span class="s">.</span>mean()
+</pre>
+</div>
+<div class="highlight">
+    <pre>  29.881137667304014
+</pre>
+</div>
+<div class="highlight">
+    <pre>
+<span class="c">  # get the Age median values, by Sex category</span>
+  df<span class="s">.</span>groupby (<span class="f">'Sex'</span>)<span class="s">.</span>Age<span class="s">.</span>median()
+</pre>
+</div>
+<div class="highlight">
+    <pre>  Sex
+  -------------------------
+  female    27.0
+  male      28.0
+  Name: Age, dtype: float64
+</pre>
+</div>
+                                <p>
+                                    It is useful to apply some visual tools for further analysis. We will use boxplot technique to discover more details.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # visualize Age notnull values by Sex category, using boxplot</span>
+  df [df<span class="s">.</span>Age<span class="s">.</span>notnull()]<span class="s">.</span>boxplot(<span class="f">'Age'</span>, <span class="f">'Sex'</span>);
+</pre>
+</div>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_age_sex_boxplot.png">
+                                <br>
+                                <p>
+                                    The plot shows similar result for both, female and male passangers, in terms of age data distribution. So, we continue to dig further.
+                                </p>
+<div class="highlight">
+    <pre>
+<span class="c">  # visualize Age notnull values by Pclass category, using boxplot</span>
+  df [df<span class="s">.</span>Age<span class="s">.</span>notnull()]<span class="s">.</span>boxplot(<span class="f">'Age'</span>, <span class="f">'Pclass'</span>);
+</pre>
+</div>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_age_pclass_boxplot.png">
+                                <br>
+                                <p>
+                                    Now we see some difference in the Age levels between the Pclasses of the passangers. But, at this point, we want to track a 
+                                    passanger's title and try to see its correspondence with the age difference. Let's try to extract this insight from the data!
+                                </p>
+
+
                                 <br>
                                 <h6>WORKING WITH OUTLIERS</h6>
                                 <br>
