@@ -596,7 +596,27 @@
                                 <br>
                                 <h6>FEATURE: Fare</h6>
                                 <br>
+                                <p>
+                                    If we recall the previous histogram visualisation of the Fare feature, we should have in mind the existence of some extremely high
+                                    values. Let us pay more attention to those values. Firstly by plotting the box plot:
+                                </p>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_fare_boxplot.png">
+                                <br>
+                                <p>
+                                    We can see some really high fares, around 500 value. To be exact, let's extract the top fares:
+                                </p>
+                                <div class="highlight">
+<pre>
+<span class="c">  # extract the Fare TOP outliers</span>
+  df<span class="s">.</span>loc [df<span class="s">.</span>Fare <span class="s">==</span> df<span class="s">.</span>Fare<span class="s">.</span>max()]
+</pre>
+</div>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_fare_top.png">
+                                <br>
+                                <br>
                                 <h6>FEATURE: Age</h6>
+                                <br>
+
                                 <br>
                                 <h5>FEATURE ENGINEERING</h5>
                                 <br>
