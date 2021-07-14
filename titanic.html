@@ -253,7 +253,7 @@
                                     percentiles, variance, standard deviation).
                                     For categorical features, we analyse the total and unique count, category counts and proportions, as well as per
                                     category statistics.
-                                    By using .describe functions, including the argument 'all', we get <strong>the summary statistics</strong> of
+                                    By using .describe functions, including the argument 'all', we get the summary statistics of
                                     all features, as follows:
                                 </p>
 <div class="highlight">
@@ -266,7 +266,7 @@
                                 <br>
                                 <p>
                                     For numerical features, we can analyse the centrality and dispersion measures. Whereas, the categorical ones
-                                    need to be analysed in a different way. Take for example the feature of <strong>Pclass</strong>, which represents
+                                    need to be analysed in a different way. Take for example the feature of Pclass, which represents
                                     the class of the passanger. The graph below represents the number of passengers, categorized by the class 1st, 2nd or 3rd.
                                 </p>
 <div class="highlight">
@@ -284,7 +284,7 @@
                                 <h5>ADVANCED Exploratory Data Analysis (EDA)</h5>
                                 <br>
                                 <p>
-                                    By creating <strong>a crosstab</strong> and applying it to the <strong>Pclass and Sex</strong> features,
+                                    By creating a crosstab and applying it to the Pclass and Sex features,
                                     we drive the additional conclusion that the majority of passangers in the third class are the male passangers,
                                     exactly number of 493. This is a very handy EDA technique, but its extension would be creating pivots. With pivots,
                                      we can add an argument of a function, which could be applied on a specific feature.
@@ -298,7 +298,7 @@
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_crosstab.png">
                                 <br>
                                 <p>
-                                    For instance, using the same features, we could create a pivot table by defining the function argument to calculate mean of the value <strong>Age</strong>.
+                                    For instance, using the same features, we could create a pivot table by defining the function argument to calculate mean of the value Age.
                                 </p>
 <div class="highlight">
     <pre>
@@ -316,14 +316,14 @@
                                 <br>
                                 <p> So, the majority of male passangers in the 3rd class are 25.96 years old in average.</p>
                                 <p>
-                                    Furthermore, we would like to apply some visualization tools in order to analyse <strong>the distribution of the data</strong>.
-                                    Firslty, we make a distinction between <strong>an univariate</strong> distribution, where we use histogram
-                                    and/or kernel density estimation (KDE) plot, and <strong>a bivariate</strong> distribution or a distribution of two features, 
+                                    Furthermore, we would like to apply some visualization tools in order to analyse the distribution of the data.
+                                    Firslty, we make a distinction between an univariate distribution, where we use histogram
+                                    and/or kernel density estimation (KDE) plot, and a bivariate distribution or a distribution of two features, 
                                     where we use a scatter plot for visualization. Analysing data distribution, we look into very important aspects of it, such as 
-                                    <strong>skewness and kurtosis</strong> and its variations to the normal one, which serves as the standard.
+                                    skewness and kurtosis and its variations to the normal one, which serves as the standard.
                                 </p>
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_histogram_fare_age.png">
-                                <p>Looking at the histogram of the features <strong>Age</strong> and <strong>Fare</strong>, we can see positively skewed distributions or
+                                <p>Looking at the histogram of the features Age and Fare, we can see positively skewed distributions or
                                     we have their mean values higher than the medians.
                                     In terms of Age, this means that 50% of the passangers are older than 28 years and the other half is younger than
                                     the median of 28 years. Also, the mean age is 29.88,
@@ -605,7 +605,7 @@
                                 <p>
                                     We can see some really high fares, around 500 value. To be exact, let's extract the top fares:
                                 </p>
-                                <div class="highlight">
+<div class="highlight">
 <pre>
 <span class="c">  # extract the Fare TOP outliers</span>
   df<span class="s">.</span>loc [df<span class="s">.</span>Fare <span class="s">==</span> df<span class="s">.</span>Fare<span class="s">.</span>max()]
@@ -613,6 +613,98 @@
 </div>
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_fare_top.png">
                                 <br>
+                                <p>
+                                    The highest fare is exactly the value of 512.3292. As we know that fare could not be negative, we apply log transformation technique so we make
+                                    it less skewed. Let's apply the numpy log function to the passangers' fare. 
+                                </p>
+<div class="highlight">
+<pre>
+<span class="c">  # apply log transformation to reduce the skewness, add 1 for zero fares</span>
+  LogFare <span class="s">=</span> np<span class="s">.</span>log (df<span class="s">.</span>Fare <span class="s">+</span> <span class="n">1.0</span>)
+</pre>
+<pre>
+<span class="c">  # plot the LogFare to check the skewness</span>
+  LogFare<span class="s">.</span>plot (kind<span class="s">=</span><span class="f">'hist'</span>, color<span class="s">=</span><span class="f">'c'</span>, bins<span class="s">=</span><span class="n">20</span>);
+</pre>
+</div>
+                                <br>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_fare_log.png">
+                                <br>
+                                <p>
+                                    This is now less skewed distribution. Furthermore, we will apply the technique of binning in order to categorize the fare
+                                    feature into 4 bins, so we treat these outliers more conveniently. In pandas, we use qcut function to achieve this. The qcut 
+                                    comes from 'Quantile-based discretization function', which basically means that it tries to divide up the data into equal sized 
+                                    bins.
+                                </p>
+<div class="highlight">
+<pre>
+<span class="c">  # apply the binning technique by using .qcut function</span>
+  pd<span class="s">.</span>qcut (df<span class="s">.</span>Fare, <span class="n">4</span>)
+</pre>
+</div>
+<div class="highlight">
+    <pre>  PassengerId
+  1         (-0.001, 7.896]
+  2       (31.275, 512.329]
+  3         (7.896, 14.454]
+  4       (31.275, 512.329]
+  5         (7.896, 14.454]
+  ...        
+  1305      (7.896, 14.454]
+  1306    (31.275, 512.329]
+  1307      (-0.001, 7.896]
+  1308      (7.896, 14.454]
+  1309     (14.454, 31.275]
+  Name: Fare, Length: 1309, dtype: category
+  Categories (4, interval[float64]): [(-0.001, 7.896] < (7.896, 14.454] < (14.454, 31.275] < (31.275, 512.329]]
+</pre>
+</div>
+<div class="highlight">
+<pre>
+<span class="c">  # add bins' labels or discretization = turn numerical into categorical feature</span>
+  pd<span class="s">.</span>qcut (df<span class="s">.</span>Fare, <span class="n">4</span>, labels<span class="s">=</span>[<span class="f">'very_low'</span>, <span class="f">'low'</span>, <span class="f">'high'</span>, <span class="f">'very_high'</span>])
+</pre>
+</div>
+<div class="highlight">
+    <pre>  PassengerId
+  1        very_low
+  2       very_high
+  3             low
+  4       very_high
+  5             low
+  ...    
+  1305          low
+  1306    very_high
+  1307     very_low
+  1308          low
+  1309         high
+  Name: Fare, Length: 1309, dtype: category
+  Categories (4, object): ['very_low' < 'low' < 'high' < 'very_high']
+</pre>
+</div>
+<div class="highlight">
+<pre>
+<span class="c">  # plot the labaled bins</span>
+  pd<span class="s">.</span>qcut (df<span class="s">.</span>Fare, <span class="n">4</span>, labels<span class="s">=</span>[<span class="f">'very_low'</span>, <span class="f">'low'</span>, <span class="f">'high'</span>, <span class="f">'very_high'</span>])<span class="s">.</span>value_counts()<span class="s">.</span>plot (kind<span class="s">=</span><span class="f">'bar'</span>, color<span class="s">=</span><span class="f">'c'</span>, rot<span class="s">=</span><span class="n">0</span>);
+</pre>
+</div>
+                                <br>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_fare_bins.png">
+                                <br>
+                                <p>
+                                    By using the qcut pandas function, we categorized the fare numerical values into 4 buckets and turn it into categorical feature of
+                                    4 bins: 'very_low', 'low', 'high' and 'very_high'. As we look at the bar graph, we see there are similar number of observations in 
+                                    each bin.
+                                    Finally, we will create new variable 'Fare_Bin' and store it into dataframe for possible future analyses.
+                                </p>
+</div>
+<div class="highlight">
+<pre>
+<span class="c">  # store new variable 'Fare_Bin'</span>
+  df[<span class="f">'Fare_Bin'</span>] <span class="s">=</span> pd<span class="s">.</span>qcut (df<span class="s">.</span>Fare, <span class="n">4</span>, labels<span class="s">=</span>[<span class="f">'very_low'</span>, <span class="f">'low'</span>, <span class="f">'high'</span>, <span class="f">'very_high'</span>])
+</pre>
+</div>
+
                                 <br>
                                 <h6>FEATURE: Age</h6>
                                 <br>
