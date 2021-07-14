@@ -708,7 +708,23 @@
                                 <br>
                                 <h6>FEATURE: Age</h6>
                                 <br>
-
+                                <p>
+                                    As previously plotted, the feature Age shows that the majority of passangers are aged around 29 years. On the other hand,
+                                    we can see some of them are really old, so let's quickly check those who are 70 years old or above.
+                                </p>
+<div class="highlight">
+<pre>
+<span class="c">  # extract the passangers over 70 years old</span>
+  df<span class="s">.</span>loc [df<span class="s">.</span>Age <span class="s">></span> <span class="n">70</span>]
+</pre>
+</div>
+                                <br>
+                                <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_age_oldest.png">
+                                <br>
+                                <p>
+                                    So we have one male passanger who is 80 years old and who also survived the shipwreck. On the other hand, we see some missing 
+                                    values in the column of Cabin feature. This is to be dealt with in the following section.
+                                </p>
                                 <br>
                                 <h5>FEATURE ENGINEERING</h5>
                                 <br>
