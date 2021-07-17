@@ -876,6 +876,56 @@
                                 <br>
                                 <h5>VISUALIZATION</h5>
                                 <br>
+                                <p>
+                                    Using the technique of subplots in pyton library 'matplotlib', which we imported as alies plt, we create even more complex visualizations
+                                    for the features Fare and Age. We adjust some additional settings, drop the sixth emphty plot, stop the overlapping of the graphs. The final result, 
+                                    with multiple conclusions that we have already driven in the previous analysis, is the multiple plots as shown below:
+                                </p>
+<div class="highlight">
+<pre>
+<span class="c">  # adding subplots using ax_arr or axis array (instead of individual axises)</span>
+  f, ax_arr <span class="s">=</span> plt<span class="s">.</span>subplots (<span class="n">3</span>, <span class="n">2</span>, figsize <span class="s">=</span> (<span class="n">14</span>, <span class="n">7</span>))
+
+<span class="c">  # plot 1</span>
+  ax_arr [<span class="n">0</span>,<span class="n">0</span>]<span class="s">.</span>hist (df<span class="s">.</span>Fare, bins<span class="s">=</span><span class="n">20</span>, color<span class="s">=</span><span class="f">'c'</span>)
+  ax_arr [<span class="n">0</span>,<span class="n">0</span>]<span class="s">.</span>set_title (<span class="f">'Histogram : Fare'</span>)
+  ax_arr [<span class="n">0</span>,<span class="n">0</span>]<span class="s">.</span>set_xlabel (<span class="f">'Bins'</span>)
+  ax_arr [<span class="n">0</span>,<span class="n">0</span>]<span class="s">.</span>set_ylabel (<span class="f">'Counts'</span>)
+
+<span class="c">  # plot 2</span>
+  ax_arr [<span class="n">0</span>,<span class="n">1</span>]<span class="s">.</span>hist (df<span class="s">.</span>Age, bins<span class="s">=</span><span class="n">20</span>, color<span class="s">=</span><span class="f">'c'</span>)
+  ax_arr [<span class="n">0</span>,<span class="n">1</span>]<span class="s">.</span>set_title (<span class="f">'Histogram : Age'</span>)
+  ax_arr [<span class="n">0</span>,<span class="n">1</span>]<span class="s">.</span>set_xlabel (<span class="f">'Bins'</span>)
+  ax_arr [<span class="n">0</span>,<span class="n">1</span>]<span class="s">.</span>set_ylabel (<span class="f">'Counts'</span>)
+
+<span class="c">  # plot 3</span>
+  ax_arr [<span class="n">1</span>,<span class="n">0</span>]<span class="s">.</span>boxplot (df<span class="s">.</span>Fare<span class="s">.</span>values)
+  ax_arr [<span class="n">1</span>,<span class="n">0</span>]<span class="s">.</span>set_title (<span class="f">'Boxplot : Fare'</span>)
+  ax_arr [<span class="n">1</span>,<span class="n">0</span>]<span class="s">.</span>set_xlabel (<span class="f">'Fare'</span>)
+  ax_arr [<span class="n">1</span>,<span class="n">0</span>]<span class="s">.</span>set_ylabel (<span class="f">'Fare'</span>)
+
+<span class="c">  # plot 4</span>
+  ax_arr [<span class="n">0</span>,<span class="n">1</span>]<span class="s">.</span>boxplot (df<span class="s">.</span>Age<span class="s">.</span>values)
+  ax_arr [<span class="n">0</span>,<span class="n">1</span>]<span class="s">.</span>set_title (<span class="f">'Boxplot : Age'</span>)
+  ax_arr [<span class="n">0</span>,<span class="n">1</span>]<span class="s">.</span>set_xlabel (<span class="f">'Age'</span>)
+  ax_arr [<span class="n">0</span>,<span class="n">1</span>]<span class="s">.</span>set_ylabel (<span class="f">'Age'</span>)
+  
+<span class="c">  # plot 5</span>
+  ax_arr [<span class="n">2</span>,<span class="n">0</span>]<span class="s">.</span>scatter (df<span class="s">.</span>Age, df<span class="s">.</span>Fare, color<span class="s">=</span><span class="f">'c'</span>, alpha<span class="s">=</span><span class="n">0.15</span>)
+  ax_arr [<span class="n">2</span>,<span class="n">0</span>]<span class="s">.</span>set_title (<span class="f">'Scatter Plot : Age vs. Fare'</span>)
+  ax_arr [<span class="n">2</span>,<span class="n">0</span>]<span class="s">.</span>set_xlabel (<span class="f">'Age'</span>)
+  ax_arr [<span class="n">2</span>,<span class="n">0</span>]<span class="s">.</span>set_ylabel (<span class="f">'Fare'</span>)
+
+<span class="c">  # cut off the 6th plot</span>
+  ax_arr [<span class="n">2</span>,<span class="n">1</span>]<span class="s">.</span>axis(<span class="f">'off'</span>)
+
+<span class="c">  # fix the overlapping</span>
+  plt<span class="s">.</span>tight_layout()
+  
+  plt.show()
+</pre>
+</div>
+                                <br>
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_histogram_fare_age_advanced.png">
                                 <br>
                                 <p></p>
