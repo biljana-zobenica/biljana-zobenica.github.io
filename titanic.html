@@ -969,7 +969,41 @@
   (179, 32) (179,)
 </pre>
 </div>
+                                <p>
+                                  Now, we are going to build a baseline model, without any machine learning, because it is a common practise to do so. It represents the output of
+                                  the majority of the class and will be our guidence, in terms of model performance, as we build more advanced model by applying the machine learning
+                                  techniques. As a conclusion, our predictive model should have better performances than the baseline one.
+                                </p>
+<div class="highlight">
+  <pre>
+<span class="c">  # import the function DummyClassifier in order to build a baseline classification model</span>
+  <span class="n">from</span> sklearn<span class="s">.</span>dummy <span class="n">import</span> DummyClassifier
 
+<span class="c">  # create the model object as the most frequent, in our case it's 0 or not survived </span>
+  model_dummy <span class="s">=</span> DummyClassifier (strategy <span class="s">=</span><span class="f"> 'most_frequent'</span>, random_state<span class="s">=</span><span class="n">0</span>)
+
+<span class="c">  # train the model by using .fit function on the model object </span>
+  model_dummy<span class="s">.</span>fit (X_train, y_train)
+</pre>
+</div>
+<div class="highlight">
+  <pre>  DummyClassifier(random_state=0, strategy='most_frequent')
+</pre>
+</div>
+<div class="highlight">
+  <pre>
+<span class="c">  # use .score method to evaluate the model performance on the test data</span>
+  <span class="n">print</span> (<span class="f">'score for baseline model: {0:.2f}'</span><span class="s">.</span>format(model_dummy<span class="s">.</span>score(X_test, y_test)))
+</div>
+<div class="highlight">
+  <pre>  score for baseline model:0.61
+</pre>
+</div>
+                                <p>
+                                  So, we pass the test data to evaluate the model performance. Firstly, model will predict the output on X_test, 
+                                  then, it will comparet the predicted output with the actual output y_test. Also, for classification model, the 
+                                  default score represents the model accuracy. The result represents our baseline model accuracy of 61%.
+                                </p>
                                 <br>
                                 <h5>Machine Learning (ML)</h5>
                                 <br>
