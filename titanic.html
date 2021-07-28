@@ -1007,7 +1007,20 @@
                                 <br>
                                 <h5>Machine Learning (ML)</h5>
                                 <br>
-                                
+                                <p>
+                                  The next step in building our model is to apply more advanced machine learning techniques. Before, we will import
+                                  necessary libraries. Since we are dealing with a binary problem, or two possible outcomes, such as 1 for survived
+                                  and 0 if not survived, we will apply a logistic regression analysis.
+                                </p>
+<div class="highlight">
+  <pre>
+<span class="c">  # import libraries for model performance metrics</span>
+  <span class="n">from</span> sklearn<span class="s">.</span>metrics <span class="n">import</span> accuracy_score, confusion_matrix, precision_score, recall_score
+
+<span class="c">  # import library for logistic regression analysis</span>
+  <span class="n">from</span> sklearn<span class="s">.</span>linear_model <span class="n">import</span> LogisticRegression
+</pre>
+</div>
                                 <br>
                                 <h5>Building ML model</h5>
                                 <br>
