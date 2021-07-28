@@ -928,11 +928,48 @@
                                 <br>
                                 <img class="img-responsive" style="width: auto;" src="/assets/img/blog/titanic_histogram_fare_age_advanced.png">
                                 <br>
-                                <p></p>
                                 <hr class="featurette-divider">
                                 <h3>Building and Evaluating Predictive Model</h3>
                                 <br>
-                                
+                                <p>
+                                  As we had previously prepared the data for the model building, so we dropped unnecessary columns, put 'Survived' column as the first one.
+                                  We will create our input variable as 'X' and output variable as 'y'. For 'X' we extract all columns from 'Age' onwards, excluding the 
+                                  'Survived' column. Additionally, for X we apply .numpy method and set the type of data to 'float' by applying .astype method. The output
+                                  variable y we create y array by using .ravel() we create a flattened one-dimensional array.
+                                </p>
+                                <br>
+<div class="highlight">
+<pre>
+<span class="c">  # creating input variable X and output variable y for model building</span>
+  X <span class="s">=</span> train_df<span class="s">.</span>loc [:, <span class="f">'Age'</span>:]<span class="s">.</span>to_numpy()<span class="s">.</span>astype(<span class="f">'float'</span>)
+  y <span class="s">=</span> train_df [<span class="f">'Survived'</span>]<span class="s">.</span>ravel()
+
+<span class="c">  # print the shape of created variables</span>
+  <span class="n">print</span> (X<span class="s">.</span>shape, y<span class="s">.</span>shape)
+</pre>
+</div>
+<div class="highlight">
+  <pre>  (891, 32) (891,)
+</pre>
+</div>
+<div class="highlight">
+  <pre>
+<span class="c">  # train-test split -> inside the function we define arrays X, y and test size of 20% of actual training data 
+  # test data will be used for model evaluation, while the rest of 80% of training data will be used for model training</span>
+  <span class="n">from</span> sklearn<span class="s">.</span>model_selection <span class="n">import</span> train_test_split
+  X_train, X_test, y_train, y_test <span class="s">=</span> train_test_split (X, y, test_size<span class="s">=</span><span class="n">0.2</span>, random_state<span class="s">=</span><span class="n">0</span>)
+
+<span class="c">  # print the shape of test and train data </span>
+  <span class="n">print</span> (X_train<span class="s">.</span>shape, y_train<span class="s">.</span>shape)
+  <span class="n">print</span> (X_test<span class="s">.</span>shape, y_test<span class="s">.</span>shape)
+</pre>
+</div>
+<div class="highlight">
+  <pre>  (712, 32) (712,)
+  (179, 32) (179,)
+</pre>
+</div>
+
                                 <br>
                                 <h5>Machine Learning (ML)</h5>
                                 <br>
