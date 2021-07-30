@@ -140,7 +140,7 @@
                                 groups of people were having higher possibilities to survive than others.
                                 In this challenge, the main question is defined as follows: <strong
                                     style="color:#df2344;">"What kind of people were
-                                    more likely to survive?".</strong>
+                                    more likely to survive?"</strong>.
                                 In this course, a couple of common data science practices were explained, regarding the
                                 extraction of dataset by using techniques such as extraction from databases (sqlite3
                                 library), through APIs (requests library) and web scraping (requests and BeautifulSoup
@@ -1018,10 +1018,20 @@
 
 <span class="c">  # import library for logistic regression analysis</span>
   <span class="n">from</span> sklearn<span class="s">.</span>linear_model <span class="n">import</span> LogisticRegression
+  <span class="n">from</span> sklearn<span class="s">.</span>ensemble <span class="n">import</span> RandomForestClassifier
+
+<span class="c">  # create model and model object</span>
+  clf <span class="s">=</span> LogisticRegression (solver<span class="s">=</span><span class="f">'sublinear'</span>)
+  model_lr_1 <span class="s">=</span> LogisticRegression (random_state<span class="s">=</span><span class="n">0</span>)
+
+<span class="c">  # train model with .fit function on the model object</span>
+  model_lr_1<span class="s">.</span>fit (X_train, y_train)
 </pre>
 </div>
-                                <!-- <h5>Building ML model</h5> -->
-                                
+                                <p>
+                                  We have imported sci-kit libraries for logistic regression analysis, created the model object and trained the model. We will now
+                                  check the model performances and compare those with the baseline model that we had previously created.
+                                </p>
                                 <br>
                                 <h5>Evaluating ML model</h5>
                                 <br>
