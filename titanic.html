@@ -1018,8 +1018,7 @@
 
 <span class="c">  # import library for logistic regression analysis</span>
   <span class="n">from</span> sklearn<span class="s">.</span>linear_model <span class="n">import</span> LogisticRegression
-  <span class="n">from</span> sklearn<span class="s">.</span>ensemble <span class="n">import</span> RandomForestClassifier
-
+  <!-- <span class="n">from</span> sklearn<span class="s">.</span>ensemble <span class="n">import</span> RandomForestClassifier -->
 <span class="c">  # create model and model object</span>
   clf <span class="s">=</span> LogisticRegression (solver<span class="s">=</span><span class="f">'sublinear'</span>)
   model_lr_1 <span class="s">=</span> LogisticRegression (random_state<span class="s">=</span><span class="n">0</span>)
@@ -1028,6 +1027,7 @@
   model_lr_1<span class="s">.</span>fit (X_train, y_train)
 </pre>
 </div>
+
                                 <p>
                                   We have imported sci-kit libraries for logistic regression analysis, created the model object and trained the model. We will now
                                   check the model performances and compare those with the baseline model that we had previously created.
@@ -1035,7 +1035,54 @@
                                 <br>
                                 <h5>Evaluating ML model</h5>
                                 <br>
-                                
+                                <p>
+                                  As we created and trained the logistic regression model, we should evaluate its performance:
+                                </p>
+<div class="highlight">
+  <pre>
+<span class="c">  # accuracy</span>
+  <span class="n">print</span> (<span class="f">'accuracy for logistic regression - version 1: {0:.2f}'</span><span class="s">.</span>format (accuracy_score(y_test, model_lr_1<span class="s">.</span>predict(X_test))))
+
+<span class="c">  # confusion matrix</span>
+  <span class="n">print</span> (<span class="f">'confusion matrix for logistic regression - version 1: \n {0}'</span><span class="s">.</span>format (confusion_matrix(y_test, model_lr_1<span class="s">.</span>predict(X_test))))
+
+<span class="c">  # precision</span>
+  <span class="n">print</span> (<span class="f">'precision for logistic regression - version 1: {0:.2f}'</span><span class="s">.</span>format (precision_score(y_test, model_lr_1<span class="s">.</span>predict(X_test))))
+
+<span class="c">  # recall</span>
+  <span class="n">print</span> (<span class="f">'recall for logistic regression - version 1: {0:.2f}'</span><span class="s">.</span>format (recall_score(y_test, model_lr_1<span class="s">.</span>predict(X_test))))
+
+</pre>
+</div>
+<div class="highlight">
+  <pre>  accuracy for logistic regression - version 1: 0.83
+  confusion matrix for logistic regression - version 1: 
+    [[95 15]
+    [15 54]]
+  precision for logistic regression - version 1: 0.78
+  recall for logistic regression - version 1: 0.78
+</pre>
+</div>
+<div class="highlight">
+  <pre>
+<span class="c">  # extract the model coefficients</span>
+  model_lr_1<span class="s">.</span>coef_
+</pre>
+</div>
+<div class="highlight">
+  <pre>  array([[-0.02367032,  0.00459391, -0.45856325,  0.42774923, -0.74536247,
+  0.07698167, -0.04810058, -0.32375099,  0.45165998,  0.95470524,
+  0.23766785, -0.03128023, -0.36468204,  0.81144645,  0.46934547,
+  -0.32759101,  0.09309015,  1.11451687,  0.52592334, -1.56220423,
+  1.07954989, -0.1103208 , -0.18735432,  0.12498004,  0.21616361,
+  0.2329452 ,  0.37911205,  0.39268022,  0.47166964,  0.08885105,
+  0.36215285,  0.59104806]])
+</pre>
+</div>
+                                <p>
+                                  Model performances are significantly improved with the model score of 83% compared to the baseline model of 61% accuracy.
+                                  Let's apply some of the techniques for model tuning and see what happens.
+                                </p>
                                 <br>
                                 <h5>Tuning ML model</h5>
                                 <br>
