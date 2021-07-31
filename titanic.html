@@ -1156,11 +1156,17 @@
                                   limit of the logistic regression model. After applying feature standardization and normalization, we confirm the same conclusion.
                                 </p>
                                 <br>
-                                <h5>Persistance of ML model</h5>
+                                <h5>Persistance of ML model and its API</h5>
                                 <br>
-                                
+                                <p>
+                                  In the final deployment of the model, we used the pickle library, put all the .pkl files in the model folder, which is in accordance with the cookie-cutter data 
+                                  science template. So, we write or persist our model to the disk, so it would be available at any moment for making predictions. Our disk is in the role of the server
+                                  for our future model API. Afterwards, we created the model's API by using the flask and request libraries, so we could envoke the API. Simply put, the job of our API
+                                  is to create predictions when the input data are delivered. It gets and extract the data, process and model the data. Finally, the API is predicting the survival of 
+                                  the Titanic passangers.
+                                </p>
                                 <br>
-                                <h5>ML API</h5>
+                                <!-- <h5>ML API</h5> -->
                                 <br>
                                 
                                 <br>
