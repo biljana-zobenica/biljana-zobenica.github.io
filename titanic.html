@@ -1086,7 +1086,71 @@
                                 <br>
                                 <h5>Tuning ML model</h5>
                                 <br>
-                                
+                                <p>
+                                  While building our model, we looked at just a couple of parameters, randomstate and solver attribute. However, logistic regression
+                                  model has a lot of parameters, such as regularization parameter, which are common for hyperoptimization of the model. In the next section,
+                                  we will try to optimize the model's parameters and its overall score. Most commonly used hyperparameters optimization technique is grid search,
+                                  which we will apply on our model.
+                                </p>
+<div class="highlight">
+  <pre>
+<span class="c">  # create the model</span>
+  model_lr_1 <span class="s">=</span> LogisticRegression (random_state<span class="s">=</span><span class="n">0</span>, solver<span class="s">=</span><span class="f">'liblinear'</span>)
+
+<span class="c">  # import GridSearch function</span>
+  <span class="n">from</span> sklearn.model_selection <span class="n">import</span> GridSearchCV
+
+<span class="c">  # create parameters dictionary</span>
+  parameters <span class="s">=</span> {<span class="f">'C'</span><span class="s">:</span>[<span class="n">1.0</span>, <span class="n">10.0</span>, <span class="n">50.0</span>, <span class="n">100.0</span>, <span class="n">1000.0</span>], <span class="f">'penalty'</span><span class="s">:</span>[<span class="f">'l1'</span>,<span class="f">'l2'</span>]} 
+
+<span class="c">  # create the grid search object</span>
+  clf <span class="s">=</span> GridSearchCV (model_lr, param_grid <span class="s">=</span> parameters, cv <span class="s">=</span><span class="n">3</span>)
+
+<span class="c">  # pass the train data to train different models with different hyperparameter combinations</span>
+  clf<span class="s">.</span>fit (X_train, y_train)
+</pre>
+</div>
+<div class="highlight">
+  <pre>  GridSearchCV(cv=3,
+  estimator=LogisticRegression(random_state=0, solver='liblinear'),
+  param_grid={'C': [1.0, 10.0, 50.0, 100.0, 1000.0],
+              'penalty': ['l1', 'l2']})
+</pre>
+</div>
+
+<div class="highlight">
+  <pre>
+<span class="c">  # get the best settings</span>
+  clf<span class="s">.</span>best_params_
+</pre>
+</div>
+<div class="highlight">
+  <pre> {'C': 1.0, 'penalty': 'l1'}
+</pre>
+</div>
+<div class="highlight">
+  <pre>
+<span class="c">  # check the model performance score</span>
+  <span class="n">print</span> (<span class="f">'best score : {0:.2f}'</span><span class="s">.</span>format (clf.best_score_))
+</pre>
+</div>
+<div class="highlight">
+  <pre> best score : 0.82
+</pre>
+</div>
+<div class="highlight">
+  <pre>
+<span class="c">  # evaluate the model</span>
+  <span class="n">print</span> (<span class="f">'score for logistic regression - version 2 : {0:.2f}'</span><span class="s">.</span>format (clf.score(X_test, y_test)))
+</pre>
+</div>
+<div class="highlight">
+  <pre> score for logistic regression - version 2 : 0.82
+</pre>
+</div>
+                                <p>
+                                  
+                                </p>
                                 <br>
                                 <h5>Persistance of ML model</h5>
                                 <br>
