@@ -1149,7 +1149,11 @@
 </pre>
 </div>
                                 <p>
-                                  
+                                  So, in this part of model tuning, we are checking whether we can optimize our model even further. Grid search technique relies on a cross validation logic, 
+                                  where we are trying out different hyperparameters in the logistic regression function. For example, the C value represents regularization parameter. We also
+                                  set cv to be 3, so we apply the 3-k fold cross validation. The goal is to find the best combination of hyperparameters' values.
+                                  Here, we can se that our model's performance is not significantly improved after applying this technique. This is simply because we are reaching the maximum
+                                  limit of the logistic regression model. After applying feature standardization and normalization, we confirm the same conclusion.
                                 </p>
                                 <br>
                                 <h5>Persistance of ML model</h5>
