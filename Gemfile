@@ -7,7 +7,7 @@ gem "jekyll-remote-theme"
 #gem "github-pages", group: :jekyll_plugins
 
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.6"
+  gem "jekyll-feed", "~> 0.11"
 end
 
 # Delete the following lines if not on Windows:
@@ -15,3 +15,17 @@ end
 gem "wdm", ">= 0.1.0" if Gem.win_platform?
 
 gem "webrick", "~> 1.7"
+
+gem "rake", "~> 13.3"
+
+# Gems unbundled from Ruby stdlib since 3.4+
+gem "csv"
+gem "logger"
+gem "base64"
+gem "bigdecimal"
+gem "psych"
+
+# Optional but useful (common with Jekyll)
+gem "safe_yaml"
+
+
