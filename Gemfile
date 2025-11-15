@@ -1,6 +1,6 @@
 #after any changes to the Gemfile, execute bundle update!
 source "https://rubygems.org"
-gemspec
+
 gem "jekyll-remote-theme"
 
 # If you do not want to use GitHub Pages, comment out the line below, then run bundle update.
@@ -17,6 +17,10 @@ gem "wdm", ">= 0.1.0" if Gem.win_platform?
 gem "webrick", "~> 1.7"
 
 gem "rake", "~> 13.3"
+
+gem "jekyll", "~> 4.2"
+
+gem "jekyll-agency"
 
 # Gems unbundled from Ruby stdlib since 3.4+
 gem "csv"
