@@ -20,6 +20,16 @@
 
   <title>{% if page.title %}{{ page.title | append: " | " | append: site.title }}{% else %}{{ site.title }}{% endif %}</title>
 
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('biljana-theme');
+        var theme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'light';
+        document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Bootstrap core CSS -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -33,7 +43,10 @@
   <!-- Custom styles for this theme -->
   <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
   <link href="assets/css/agency.css" rel="stylesheet">
+  <link href="assets/css/dark-mode.css" rel="stylesheet">
   
+  <script src="assets/js/dark-mode.js"></script>
+
   <!-- Page container change top padding when nav shrinks -->
   {% if page.layout == "page" %}
   <style>
