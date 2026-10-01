@@ -24,6 +24,9 @@
 
 <!-- Custom styles for this theme -->
   <link href="assets/css/agency.css" rel="stylesheet">
+  <link href="assets/css/dark-mode.css" rel="stylesheet">
+
+  <script src="assets/js/dark-mode.js"></script>
 
 <!-- Page container change top padding when nav shrinks -->
 
@@ -45,6 +48,15 @@
 		  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
 		  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
 		  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="./blog.html">Blog</a></li>
+          <li class="nav-item">
+            <button id="theme-toggle" class="theme-toggle" type="button"
+                    aria-label="Switch to dark mode"
+                    aria-pressed="false"
+                    title="Switch to dark mode">
+              <i class="theme-icon theme-icon-moon fas fa-moon" aria-hidden="true"></i>
+              <i class="theme-icon theme-icon-sun fas fa-sun" aria-hidden="true"></i>
+            </button>
+          </li>
         </ul>
       </div>
     </div>
