@@ -158,12 +158,13 @@ html.dark-mode #contact {
 
 .theme-toggle .theme-icon-moon {
   color: #1d1d1f;
-  opacity: 1;
+  opacity: 0;
+  border: none;
 }
 
 .theme-toggle .theme-icon-sun {
   color: #f0c14b;
-  opacity: 0;
+  opacity: 1;
 }
 
 html:not(.dark-mode) .theme-toggle {
@@ -171,12 +172,18 @@ html:not(.dark-mode) .theme-toggle {
   background: rgba(33, 37, 41, .05);
 }
 
+html:not(.dark-mode) #mainNav.navbar-shrink .theme-toggle {
+  border: none;
+  background: rgba(255,255,255,.08);
+}
+
 html:not(.dark-mode) .theme-toggle .theme-icon-moon {
-  opacity: 1;
+  opacity: 0;
+  border: none;
 }
 
 html:not(.dark-mode) .theme-toggle .theme-icon-sun {
-  opacity: 0;
+  opacity: 1;
 }
 
 html.dark-mode .theme-toggle,
@@ -186,11 +193,11 @@ html.dark-mode #mainNav.navbar-shrink .theme-toggle {
 }
 
 html.dark-mode .theme-toggle .theme-icon-moon {
-  opacity: 0;
+  opacity: 1;
 }
 
 html.dark-mode .theme-toggle .theme-icon-sun {
-  opacity: 1;
+  opacity: 0;
 }
 
 #mainNav.navbar-shrink .theme-toggle {
@@ -207,29 +214,30 @@ html.dark-mode .theme-toggle .theme-icon-sun {
 
 #mainNav.navbar-shrink .theme-toggle .theme-icon-moon {
   color: #f5f7fa;
-  opacity: 1;
+  opacity: 0;
+  border: none;
 }
 
 #mainNav.navbar-shrink .theme-toggle .theme-icon-sun {
-  color: #f5f7fa;
-  opacity: 0;
+  color: #f0c14b;
+  opacity: 1;
 }
 
 html:not(.dark-mode) #mainNav.navbar-shrink .theme-toggle .theme-icon-moon {
-  opacity: 1;
+  opacity: 0;
 }
 
 html:not(.dark-mode) #mainNav.navbar-shrink .theme-toggle .theme-icon-sun {
-  opacity: 0;
+  opacity: 1;
 }
 
 html.dark-mode #mainNav.navbar-shrink .theme-toggle .theme-icon-moon {
-  opacity: 0;
+  opacity: 1;
 }
 
 html.dark-mode #mainNav.navbar-shrink .theme-toggle .theme-icon-sun {
-  opacity: 1;
-  color: #f5f7fa;
+  opacity: 0;
+  color: #f0c14b;
 }
 
 html.dark-mode .theme-toggle:hover,
@@ -238,7 +246,29 @@ html.dark-mode .theme-toggle:hover,
 }
 
 @media (max-width: 991px) {
+  .navbar-nav .nav-item:last-child {
+    display: block;
+    width: 100%;
+  }
+
   .theme-toggle {
-    margin: 8px 15px 12px auto;
+    margin: 8px 0 12px 0;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.35);
+    float: left;
+  }
+
+  html:not(.dark-mode) .theme-toggle {
+    border: none;
+  }
+
+  .theme-toggle .theme-icon-moon {
+    color: #f5f7fa;
+    background: rgba(255,255,255,.08);
+    border: none;
+  }
+
+  .theme-toggle .theme-icon-sun {
+    background: rgba(255,255,255,.08);
   }
 }
